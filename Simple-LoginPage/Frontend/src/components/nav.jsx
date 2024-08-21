@@ -9,15 +9,15 @@ import SideMenu from './Sidemenu';
 
 
 const networks = {
-    L3: {
-    chainId: `0x${Number(51611).toString(16)}`,
-    chainName: "Mode L3",
+    espace: {
+    chainId: `0x${Number(71).toString(16)}`,
+    chainName: "espace",
     nativeCurrency: {
-      name: "L3",
-      symbol: "ETH",
+      name: "espace",
+      symbol: "CFX",
       decimals: 18,
     },
-    rpcUrls: ["https://rpc-live-amber-cougar-9xs8t1or8j.t.conduit.xyz"],
+    rpcUrls: ["https://evmtestnet.confluxrpc.com	"],
   },
 };
 
@@ -45,7 +45,7 @@ function Nav() {
     
     const balanceWei= await web3.eth.getBalance(accountAddress)
             
-    const finalbalance = web3.utils.fromWei(balanceWei,"ether")+ " "+networks["L3"]["nativeCurrency"]["name"];
+    const finalbalance = web3.utils.fromWei(balanceWei,"ether")+ " "+networks["espace"]["nativeCurrency"]["name"];
     console.log("result->"+finalbalance);
     setBalance(finalbalance);
     
@@ -61,11 +61,11 @@ function Nav() {
   }
   let web3 =  new Web3(window.ethereum);
  
-  if(web3.network !=="L3"){
+  if(web3.network !=="espace"){
       await window.ethereum.request({
           method:"wallet_addEthereumChain",
           params:[{
-              ...networks["L3"]
+              ...networks["espace"]
           }]
       })
   }
@@ -112,7 +112,7 @@ function Nav() {
   href="/"
 >
   
-  <div className=" mmh text-lg mx-3">Celestia Club</div>
+  <div className=" mmh text-lg mx-3">ConfluX Login Tutorial</div>
 </a>
 </div>
   <button

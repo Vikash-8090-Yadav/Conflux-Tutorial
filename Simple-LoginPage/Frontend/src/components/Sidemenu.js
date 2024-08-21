@@ -5,16 +5,11 @@ import "./sidemenu.css";
 import $, { error } from 'jquery'; 
 
 import {Web3} from 'web3';
-const config = {
-  apiKey: "D5xSFqtTLJe_xdCJ24O4A8S6z2tafhCv",
-  network: "polygon-mumbai",
-};
-
 
 
 const myWallet = localStorage.getItem("filWalletAddress");
 
-const web3 = new Web3(new Web3.providers.HttpProvider("https://api.avax-test.network/ext/bc/C/rpc"));
+const web3 = new Web3(new Web3.providers.HttpProvider("https://evmtestnet.confluxrpc.com"));
 
 function SideMenu({ isOpen, setIsOpen, smartAccount, logout, address }) {
 
@@ -29,7 +24,6 @@ function SideMenu({ isOpen, setIsOpen, smartAccount, logout, address }) {
   const smarbal = localStorage.getItem("smartbal");
 
 
-
   async function checkBalance() {
     // console.log(localStorage.getItem("LL"));
     
@@ -39,10 +33,11 @@ function SideMenu({ isOpen, setIsOpen, smartAccount, logout, address }) {
         // Handle the case where the wallet address is not available in localStorage
         return;
       }
+
       
       // Assuming you've properly initialized the web3 instance before this point
       const balanceWei = await web3.eth.getBalance(myWallet);
-      
+
       // Convert Wei to Ether (assuming Ethereum)
       const balanceEther = web3.utils.fromWei(balanceWei, "ether");
 
@@ -82,7 +77,7 @@ function SideMenu({ isOpen, setIsOpen, smartAccount, logout, address }) {
                   <div className=" mashiha divide-gray-900 bg-gray-900 text-white-900" >
                     <div className="px-4 mm  sm:px-6">
                       <div className="flex items-start justify-between">
-                        <h2 className="text-llg font-medium text-white">Smart Account</h2>
+                        <h2 className="text-llg font-medium text-white">Login Page</h2>
                         
                       </div>
                       
@@ -120,7 +115,7 @@ close
   <div className=' d1 flex items-center bg-zinc-100 text-zinc-300 w-fit p-2 px-3 rounded-l-lg'>
     <p className='d text-sm'>{'CFX'}</p>
     <p className= 'dd bg-zinc-800 p-1 px-3 ml-3 rounded-lg text-zinc-100'>
-      {parseFloat(smarbal).toFixed(4)}
+      {parseFloat(value1).toFixed(3)}
     </p>
   </div>
 </div>
