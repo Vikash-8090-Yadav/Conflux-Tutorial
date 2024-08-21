@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import EthBadge from './EthBadge';
 import "./sidemenu.css";
-import { UseAlchemy } from './Hooks/Connection';
 import $, { error } from 'jquery'; 
 
 import {Web3} from 'web3';
@@ -11,6 +10,9 @@ const config = {
   network: "polygon-mumbai",
 };
 
+
+
+const myWallet = localStorage.getItem("filWalletAddress");
 
 const web3 = new Web3(new Web3.providers.HttpProvider("https://api.avax-test.network/ext/bc/C/rpc"));
 
@@ -21,7 +23,6 @@ function SideMenu({ isOpen, setIsOpen, smartAccount, logout, address }) {
   function hndclck(){
     window.open(`https://evmtestnet.confluxscan.net/address/${address1}`, '_blank');
   }
-  const {ownerAddress,accountAddress,provider, handleLogin,userInfo,loading} = UseAlchemy();
   const [value, setValue] = useState(0);
   const [value1, setValue1] = useState(0);
   const [balances, setBalances] = useState(null);
@@ -34,7 +35,6 @@ function SideMenu({ isOpen, setIsOpen, smartAccount, logout, address }) {
     
     
     try {
-      const myWallet = localStorage.getItem("filWalletAddress");
       if (!myWallet) {
         // Handle the case where the wallet address is not available in localStorage
         return;
@@ -99,7 +99,7 @@ close
                     <hr className=' hroi'></hr>
                     <div className='text-white m-2'>
                       <div className='flex mml '>
-                      <EthBadge className="text-white" address={accountAddress} />
+                      <EthBadge className="text-white" address={myWallet} />
                       <button  className="btn bg-blue-500  text-white  px-4 rounded-full" onClick={hndclck}>
                        View on Conflux espace explorer
                         

@@ -6,10 +6,6 @@ import { ToastContainer } from 'react-toastify';
 
 import Nav from "./nav";
 const Layout = () => {
-
-
-  
-  
   return (
     
     <div>
