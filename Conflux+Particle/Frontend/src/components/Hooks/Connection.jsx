@@ -8,7 +8,7 @@ import React, { useState, useEffect, useContext, useMemo } from "react";
 
 
 
-const AlchemyContext = React.createContext({
+const ConfluxContext = React.createContext({
   ownerAddress: undefined,
   accountAddress: undefined,
   provider: undefined,
@@ -20,11 +20,11 @@ const AlchemyContext = React.createContext({
 });
 
 
-export const UseAlchemy = () => {
-  return useContext(AlchemyContext);
+export const UseParticle = () => {
+  return useContext(ConfluxContext);
 };
 
-export const BiconomyProvider = ({ children }) => {
+export const ConfluxProvider = ({ children }) => {
 
 
    const [loading, setLoading] = useState(false);
@@ -102,7 +102,7 @@ export const BiconomyProvider = ({ children }) => {
 
 
   return (
-        <AlchemyContext.Provider
+        <ConfluxContext.Provider
       value={{
         ownerAddress: ownerAddress,
         accountAddress: accountAddress,
@@ -115,7 +115,7 @@ export const BiconomyProvider = ({ children }) => {
       }}
     >
       {children}
-    </AlchemyContext.Provider>
+    </ConfluxContext.Provider>
   );
    
 };

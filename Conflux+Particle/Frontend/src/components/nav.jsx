@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from "react";
 import Tg from "./toggle";
-import { UseAlchemy } from './Hooks/Connection';
+
 import { ParticleNetwork } from "@particle-network/auth";
 import SideMenu from './Sidemenu';
 
+import { UseParticle } from "./Hooks/Connection";
 
 
 function Nav() {
 
-  const {ownerAddress,accountAddress,provider, handleLogin,userInfo,loading,Logout} = UseAlchemy();
+  const {ownerAddress,accountAddress,provider, handleLogin,userInfo,loading,Logout} = UseParticle();
   const [isOpen, setIsOpen] = useState(false);
   
   function logout(){
@@ -37,7 +38,7 @@ function Nav() {
   href="/"
 >
   
-  <div className=" mmh text-lg mx-3">CFX Club</div>
+  <div className=" mmh text-lg mx-3">CFX TUT</div>
 </a>
 </div>
   <button

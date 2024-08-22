@@ -4,15 +4,14 @@ import { useState,useEffect } from "react";
 import Layout from "./components/Layout";
 import Nav from "./components/nav";
 
-import { BiconomyProvider } from "./components/Hooks/Connection";
-import { UseAlchemy } from "./components/Hooks/Connection";
+import { ConfluxProvider } from "./components/Hooks/Connection";
 export const App = () =>{
 
     // Render the protected routes if authenticated
   
 
     return (
-      <BiconomyProvider>
+      <ConfluxProvider>
       <div>
         <Routes>
 
@@ -23,7 +22,7 @@ export const App = () =>{
           </Route>
         </Routes>
       </div>
-      </BiconomyProvider>
+      </ConfluxProvider>
     );
   
 }

@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Transition } from '@headlessui/react';
 import EthBadge from './EthBadge';
-import TokenBalance from './TokenBalance';
 import "./sidemenu.css";
-import { UseAlchemy } from './Hooks/Connection';
-import { Alchemy, Network } from "alchemy-sdk";
+import { UseParticle } from './Hooks/Connection';
 import $, { error } from 'jquery'; 
 import Transak from '@biconomy/transak';
 
@@ -13,9 +11,9 @@ const config = {
   apiKey: "D5xSFqtTLJe_xdCJ24O4A8S6z2tafhCv",
   network: "polygon-mumbai",
 };
-const alchemy = new Alchemy(config);
 
-const web3 = new Web3(new Web3.providers.HttpProvider("https://api.avax-test.network/ext/bc/C/rpc"));
+
+const web3 = new Web3(new Web3.providers.HttpProvider("https://evmtestnet.confluxrpc.com"));
 
 function SideMenu({ isOpen, setIsOpen, smartAccount, logout, address }) {
 
@@ -24,7 +22,7 @@ function SideMenu({ isOpen, setIsOpen, smartAccount, logout, address }) {
   function hndclck(){
     window.open(`https://evmtestnet.confluxscan.net/address/${address1}`, '_blank');
   }
-  const {ownerAddress,accountAddress,provider, handleLogin,userInfo,loading} = UseAlchemy();
+  const {ownerAddress,accountAddress,provider, handleLogin,userInfo,loading} = UseParticle();
   const [value, setValue] = useState(0);
   const [value1, setValue1] = useState(0);
   const [balances, setBalances] = useState(null);
@@ -70,48 +68,7 @@ function SideMenu({ isOpen, setIsOpen, smartAccount, logout, address }) {
     setIsOpen(false);
   }
 
-  const getBalances = async () => {
-    
 
-
-
-    console.log(accountAddress)
-    const address = smartAccount;
-
-  // Get token balances
-  const balances = await alchemy.core.getTokenBalances("0x05f8d732692f087aDB447CaA20d27021FaEEe820");
-
-  console.log(balances)
-  const aa = await alchemy.core.getTokenBalances("0x05f8d732692f087aDB447CaA20d27021FaEEe820")
-  console.log("HH",aa);
-
-  const nonZeroBalances = balances.tokenBalances.filter((token) => {
-    return token.tokenBalance !== "0";
-  });
-  console.log(nonZeroBalances)
-
-  console.log(`Token balances of ${address} \n`);
-
-  // Counter for SNo of final output
-  let i = 1;
-
-  // Loop through all tokens with non-zero balance
-  for (let token of nonZeroBalances) {
-    // Get balance of token
-    let balance = token.tokenBalance;
-
-    // Get metadata of token
-    const metadata = await alchemy.core.getTokenMetadata(token.contractAddress);
-
-    // Compute token balance in human-readable format
-    balance = balance / Math.pow(10, metadata.decimals);
-    
-
-
-    // Print name, balance, and symbol of token
-    console.log(`${i++}. ${metadata.name}: ${balance} ${metadata.symbol}`);
-  }
-  }
 
   useEffect(() => {
      checkBalance();
