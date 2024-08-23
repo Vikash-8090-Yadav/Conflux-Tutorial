@@ -42,9 +42,9 @@ export const ConfluxProvider = ({ children }) => {
 
 
   const smartAccount = new SmartAccount(provider, {
-    projectId: "2509d133-0dd5-409a-bf0d-7db2b6648bbf",
-    clientKey: "cbdskjEjAxMDhYksv0ubDZo51l599QCOHZqBpPA0",
-    appId: "efb5c91d-cfae-49d5-bacb-8b30e35e83f9",
+    projectId: "Your Project id",
+    clientKey: "Your clinet key",
+    appId: "Your App id",
     aaOptions: {
       accountContracts: {
         SIMPLE: [{ chainIds: [ConfluxeSpaceTestnet.id], version: '1.0.0' }] // Or BICONOMY, LIGHT, CYBERCONNECT
