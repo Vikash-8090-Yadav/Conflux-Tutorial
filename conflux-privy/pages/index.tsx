@@ -11,8 +11,8 @@ export const getServerSideProps: GetServerSideProps = async ({ req }) => {
   // If no cookie is found, skip any further checks
   if (!cookieAuthToken) return { props: {} };
 
-  const PRIVY_APP_ID = "clxrjv9tl01pd13d086zgvhyl";
-  const PRIVY_APP_SECRET = "LuBcBKVgYqXPwfGEsau8nYS2xqhX45vmk3bK4KywY8eEBJKtQk5VCg1WSeAA3oFe4gbPSzDj222t8MgSfURPscY";
+  const PRIVY_APP_ID = "YOURID";
+  const PRIVY_APP_SECRET = "YOURSECRET";
   const client = new PrivyClient(PRIVY_APP_ID!, PRIVY_APP_SECRET!);
 
   try {
