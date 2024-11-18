@@ -1,8 +1,9 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
+
+
 import { Web3 } from 'web3'
-import { ethers } from 'ethers'
 
 const web3 = new Web3(new Web3.providers.HttpProvider("https://evmtestnet.confluxrpc.com"));
 
@@ -116,9 +117,11 @@ export default function Home() {
     
     try {
       const web3Instance = new Web3(window.ethereum)
+
       const contract = new web3Instance.eth.Contract(ABI.abi, smartcontractAddress)
       const data = contract.methods.setGreeting(newGreeting).encodeABI()
       const gasEstimate = await contract.methods.setGreeting(newGreeting)
+      
         .estimateGas({ from: address })
       const gasPrice = await web3Instance.eth.getGasPrice()
       const gasLimit = `0x${Math.ceil(Number(gasEstimate) * 1.2).toString(16)}`
