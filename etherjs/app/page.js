@@ -3,8 +3,6 @@
 import React, { useState, useEffect } from 'react'
 import { ethers } from 'ethers'
 
-// Initialize provider for read operations
-// const provider = new ethers.JsonRpcProvider("https://evmtestnet.confluxrpc.com");
 const provider = new  ethers.providers.JsonRpcProvider("https://evmtestnet.confluxrpc.com");
 
 const smartcontractAddress ="0x9708aD11De99a34901942cee425Ae77E2f3129da";
