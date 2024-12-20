@@ -3,7 +3,7 @@ const { EvmPriceServiceConnection } = require("@pythnetwork/pyth-evm-js");
 
 async function main() {
   const CFXPrice = await hre.ethers.getContractFactory("CFXPrice");
-  const cfxPrice = await CFXPrice.attach("0x6c5E9F5bFe1399bd0Fe92066347A3a5c2A30A315");
+  const cfxPrice = await CFXPrice.attach("0x1354fef885CD6917E67F911E6a43321963E28d27");
 
   const connection = new EvmPriceServiceConnection(
     "https://hermes.pyth.network"
